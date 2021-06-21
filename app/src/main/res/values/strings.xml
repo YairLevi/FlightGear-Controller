@@ -4,4 +4,5 @@
     <string name="connect_to_flightgear">CONNECT TO FLIGHTGEAR</string>
     <string name="press_to_type">Press To Type</string>
     <string name="host_ip">Host IP:</string>
+    <string name="button">Button</string>
 </resources>

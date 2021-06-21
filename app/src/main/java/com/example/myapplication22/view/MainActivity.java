@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 
 import com.example.myapplication22.R;
@@ -30,54 +31,21 @@ public class MainActivity extends AppCompatActivity implements JoystickView.Joys
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(400, 400);
-//        JoystickView jsv = new JoystickView(this);
-//        addContentView(jsv, lp);
+
         setTitle("FlightGear Joystick\n");
         ActivityMainBinding b = DataBindingUtil.setContentView(this, R.layout.activity_main);
         vm = new ViewModel(new Model());
         b.setVm(vm);
-        //SeekBar aileronBar = findViewById(R.id.aileronBar);
-        //SeekBar elevatorBar = findViewById(R.id.elevatorBar);
+
         SeekBar rudderBar = findViewById(R.id.rudderBar);
         SeekBar throttleBar = findViewById(R.id.throttleBar);
-//
-//        aileronBar.setMin(-1);
-//        aileronBar.setMax(1);
-//        aileronBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//            @Override
-//            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-//                vm.update(aileron, (float) aileronBar.getProgress());
-//            }
-//
-//            @Override
-//            public void onStartTrackingTouch(SeekBar seekBar) { }
-//
-//            @Override
-//            public void onStopTrackingTouch(SeekBar seekBar) { }
-//        });
-//
-//        elevatorBar.setMin(-1);
-//        elevatorBar.setMax(1);
-//        elevatorBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//            @Override
-//            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-//                vm.update(elevator, (float) elevatorBar.getProgress());
-//            }
-//
-//            @Override
-//            public void onStartTrackingTouch(SeekBar seekBar) { }
-//
-//            @Override
-//            public void onStopTrackingTouch(SeekBar seekBar) { }
-//        });
-//
-        rudderBar.setMin(-1);
-        rudderBar.setMax(1);
+
+        //rudderBar.setMin(-1000);
+        rudderBar.setMax(2000);
         rudderBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                vm.update(rudder, (float) rudderBar.getProgress());
+                vm.update(rudder, (float) (rudderBar.getProgress() - 1000) / 1000);
             }
 
             @Override
@@ -87,12 +55,12 @@ public class MainActivity extends AppCompatActivity implements JoystickView.Joys
             public void onStopTrackingTouch(SeekBar seekBar) { }
         });
 
-        throttleBar.setMin(0);
-        throttleBar.setMax(1);
+        //throttleBar.setMin(0);
+        throttleBar.setMax(2000);
         throttleBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                vm.update(throttle, (float) throttleBar.getProgress());
+                vm.update(throttle, (float) (throttleBar.getProgress() - 1000) / 1000);
             }
 
             @Override
@@ -108,11 +76,10 @@ public class MainActivity extends AppCompatActivity implements JoystickView.Joys
 
     @Override
     public void onJoystickMoved(float xPercent, float yPercent, int id) {
-        if (0.0 <= xPercent && 1.0 >= xPercent)
+        if (-1.0 <= xPercent && 1.0 >= xPercent)
             vm.update(aileron, xPercent);
-        if (0.0 <= yPercent && 1.0 >= yPercent)
+        if (-1.0 <= yPercent && 1.0 >= yPercent)
             vm.update(elevator, -yPercent);
-        System.out.println("X percent: " + xPercent + " Y percent: " + yPercent);
     }
 }
 

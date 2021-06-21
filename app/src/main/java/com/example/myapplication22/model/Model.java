@@ -39,21 +39,14 @@ public class Model {
         }).start();
     }
 
-    public void update(String target, float value) throws InterruptedException {
-        dispatchQueue.put(() -> {
-            out.print("set /controls/"+target+" "+value+"\r\n");
-            out.flush();
-        });
+    public void update(String target, float value) {
+        try {
+            dispatchQueue.put(() -> {
+                out.print("set /controls/" + target + " " + value + "\r\n");
+                out.flush();
+            });
+        } catch (InterruptedException e) {
+            System.out.println("out is still NULL\n");
+        }
     }
-//
-//    public void startEngine() {
-//        try {
-//            dispatchQueue.put(() -> {
-//                out.print("set /controls/engines/engine/current-engine/running "+true);
-//                out.flush();
-//            });
-//        } catch (InterruptedException e) {
-//            System.out.println("Could Not Start Engine\n");
-//        }
-//    }
 }
