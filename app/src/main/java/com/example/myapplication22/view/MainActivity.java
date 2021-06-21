@@ -3,16 +3,20 @@ package com.example.myapplication22.view;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.databinding.DataBindingUtil;
 
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 
+import com.example.myapplication22.Controller;
 import com.example.myapplication22.R;
 import com.example.myapplication22.databinding.ActivityMainBinding;
 import com.example.myapplication22.model.Model;
@@ -72,6 +76,18 @@ public class MainActivity extends AppCompatActivity implements JoystickView.Joys
 
         Button button = findViewById(R.id.button);
         button.setOnClickListener(v -> vm.connect());
+        button = findViewById(R.id.changePage);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openController();
+            }
+        });
+    }
+
+    public void openController() {
+        Intent intent = new Intent(this, Controller.class);
+        startActivity(intent);
     }
 
     @Override
