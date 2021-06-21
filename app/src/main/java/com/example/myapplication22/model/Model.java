@@ -11,22 +11,33 @@ public class Model {
 
     private PrintWriter out;
     public BlockingQueue<Runnable> dispatchQueue = new LinkedBlockingQueue<Runnable>();
-
+    boolean status = false;
 
     public Model() { }
 
-    public void connect(String ip, int port) {
+    public boolean connect(String ip, int port) {
         Thread t = new Thread(() -> {
             try {
                 Socket fg = new Socket(ip, port);
                 out = new PrintWriter(fg.getOutputStream(), true);
+                status = true;
             } catch (Exception e) {
                 System.out.println("---Could Not Connect To FlightGear---\n");
-                System.out.println(e.toString());
+                System.out.println("Exception: "+e.toString());
+                status = false;
             }
         });
         t.start();
-        run();
+        try {
+            t.join();
+        } catch (Exception e) {
+            System.out.println("Could not join thread");
+            System.out.println("Exception: "+e.toString());
+        }
+        if (status) {
+            run();
+        }
+        return status;
     }
 
     public void run() {

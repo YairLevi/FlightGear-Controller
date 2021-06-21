@@ -3,24 +3,24 @@ package com.example.myapplication22.view;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.databinding.DataBindingUtil;
 
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.SeekBar;
 
-import com.example.myapplication22.Controller;
 import com.example.myapplication22.R;
 import com.example.myapplication22.databinding.ActivityMainBinding;
 import com.example.myapplication22.model.Model;
 import com.example.myapplication22.view_model.ViewModel;
+import com.google.android.material.snackbar.Snackbar;
+
+import java.net.URI;
 
 public class MainActivity extends AppCompatActivity implements JoystickView.JoystickListener {
 
@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity implements JoystickView.Joys
         SeekBar rudderBar = findViewById(R.id.rudderBar);
         SeekBar throttleBar = findViewById(R.id.throttleBar);
 
-        //rudderBar.setMin(-1000);
         rudderBar.setMax(2000);
+        rudderBar.setProgress(1000);
         rudderBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -59,12 +59,11 @@ public class MainActivity extends AppCompatActivity implements JoystickView.Joys
             public void onStopTrackingTouch(SeekBar seekBar) { }
         });
 
-        //throttleBar.setMin(0);
-        throttleBar.setMax(2000);
+        throttleBar.setMax(1000);
         throttleBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                vm.update(throttle, (float) (throttleBar.getProgress() - 1000) / 1000);
+                vm.update(throttle, (float) throttleBar.getProgress() / 1000);
             }
 
             @Override
@@ -75,19 +74,29 @@ public class MainActivity extends AppCompatActivity implements JoystickView.Joys
         });
 
         Button button = findViewById(R.id.button);
-        button.setOnClickListener(v -> vm.connect());
-        button = findViewById(R.id.changePage);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openController();
+        button.setOnClickListener(v -> {
+            if (!vm.connect()) {
+                Snackbar sb = Snackbar.make(v, R.string.alert, Snackbar.LENGTH_SHORT);
+                sb.show();
+            } else {
+                MediaPlayer mp = MediaPlayer.create(this, R.raw.ready_for_takeoff);
+                mp.start();
+                changeScreen();
             }
         });
+
     }
 
-    public void openController() {
-        Intent intent = new Intent(this, Controller.class);
-        startActivity(intent);
+    public void changeScreen() {
+        findViewById(R.id.editTextTextPersonName).setVisibility(View.INVISIBLE);
+        findViewById(R.id.editTextTextPersonName2).setVisibility(View.INVISIBLE);
+        findViewById(R.id.button).setVisibility(View.INVISIBLE);
+        findViewById(R.id.button).setVisibility(View.INVISIBLE);
+        findViewById(R.id.textView).setVisibility(View.INVISIBLE);
+        findViewById(R.id.textView2).setVisibility(View.INVISIBLE);
+        findViewById(R.id.joystick).setVisibility(View.VISIBLE);
+        findViewById(R.id.rudderBar).setVisibility(View.VISIBLE);
+        findViewById(R.id.throttleBar).setVisibility(View.VISIBLE);
     }
 
     @Override

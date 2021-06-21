@@ -2,8 +2,7 @@ package com.example.myapplication22.view_model;
 
 import com.example.myapplication22.model.Model;
 
-
-public class ViewModel{
+public class ViewModel {
 
     Model m;
     public String ip;
@@ -11,8 +10,8 @@ public class ViewModel{
 
     public ViewModel(Model m) { this.m = m; }
 
-    public void connect() {
-        this.m.connect(ip, Integer.parseInt(port));
+    public boolean connect() {
+        return this.m.connect(ip, Integer.parseInt(port));
     }
 
     public void update(String target, float value){
@@ -22,5 +21,4 @@ public class ViewModel{
             System.out.println("Exception thrown when tried to update values.\n");
         }
     }
-
 }

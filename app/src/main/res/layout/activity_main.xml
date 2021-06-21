@@ -12,18 +12,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.MainActivity">
-
-        <com.example.myapplication22.view.JoystickView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/throttleBar"
-            app:layout_constraintHeight_percent="0.38"
-            app:layout_constraintWidth_percent="0.7"
-            tools:ignore="MissingConstraints" />
+        tools:context=".view.MainActivity"
+        android:background="@color/cardview_dark_background">
 
         <EditText
             android:id="@+id/editTextTextPersonName"
@@ -38,8 +28,9 @@
             app:layout_constraintHorizontal_bias="0.8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.8"
-            app:layout_constraintWidth_percent="0.6" />
+            app:layout_constraintVertical_bias="0.9"
+            app:layout_constraintWidth_percent="0.6"
+            />
 
         <EditText
             android:id="@+id/editTextTextPersonName2"
@@ -53,12 +44,13 @@
             app:layout_constraintHorizontal_bias="0.79"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.14"
+            app:layout_constraintVertical_bias="0.4"
             app:layout_constraintHeight_percent="0.06"
             app:layout_constraintWidth_percent="0.6" />
 
         <TextView
             android:id="@+id/textView"
+            android:textColor="@color/white"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:text="@string/host_ip"
@@ -77,6 +69,7 @@
 
         <TextView
             android:id="@+id/textView2"
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
@@ -94,43 +87,54 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:textSize="14sp"
+            android:backgroundTint="@color/teal_700"
             android:text="@string/connect_to_flightgear"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
             app:layout_constraintStart_toStartOf="@+id/textView"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
-            app:layout_constraintVertical_bias="0.05"
+            app:layout_constraintVertical_bias="0.1"
             app:layout_constraintWidth_percent="0.7"
-            />
+            tools:targetApi="lollipop" />
 
         <SeekBar
             android:id="@+id/rudderBar"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/throttleBar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button"
-            app:layout_constraintVertical_bias="0.059" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="invisible"
+            app:layout_constraintVertical_bias="0.5"
+            />
 
         <SeekBar
             android:id="@+id/throttleBar"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/joystick"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.500"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rudderBar"
-            app:layout_constraintVertical_bias="0.1" />
+            app:layout_constraintTop_toTopOf="@+id/rudderBar"
+            android:visibility="invisible"
+            app:layout_constraintVertical_bias="0.5" />
 
-        <Button
-            android:id="@+id/changePage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button"
-            tools:layout_editor_absoluteX="4dp"
+        <com.example.myapplication22.view.JoystickView
+            android:id="@+id/joystick"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.38"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.8"
+            app:layout_constraintWidth_percent="0.7"
+            android:visibility="invisible"
             tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

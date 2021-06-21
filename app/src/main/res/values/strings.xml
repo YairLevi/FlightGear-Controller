@@ -5,6 +5,5 @@
     <string name="press_to_type">Press To Type</string>
     <string name="host_ip">Host IP:</string>
     <string name="button">Button</string>
-    <string name="hello_you_niggg">HELLO YOU NIGGG</string>
-    <string name="yoyooyyo">YOYOOYYO</string>
+    <string name="alert">Connection Failed. Make sure FlightGear is running and check the IP and port</string>
 </resources>
