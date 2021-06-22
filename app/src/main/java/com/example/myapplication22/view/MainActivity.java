@@ -8,10 +8,14 @@ import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.databinding.DataBindingUtil;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 
 import com.example.myapplication22.R;
@@ -40,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements JoystickView.Joys
         ActivityMainBinding b = DataBindingUtil.setContentView(this, R.layout.activity_main);
         vm = new ViewModel(new Model());
         b.setVm(vm);
+
+
 
         SeekBar rudderBar = findViewById(R.id.rudderBar);
         SeekBar throttleBar = findViewById(R.id.throttleBar);
@@ -84,6 +90,10 @@ public class MainActivity extends AppCompatActivity implements JoystickView.Joys
                 changeScreen();
             }
         });
+        ((JoystickView)findViewById(R.id.joystick)).addImages(
+                findViewById(R.id.base),
+                findViewById(R.id.controller)
+        );
 
     }
 

@@ -11,6 +11,8 @@ public class ViewModel {
     public ViewModel(Model m) { this.m = m; }
 
     public boolean connect() {
+        if (port == null || ip == null)
+            return false;
         return this.m.connect(ip, Integer.parseInt(port));
     }
 

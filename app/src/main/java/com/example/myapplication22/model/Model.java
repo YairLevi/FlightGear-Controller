@@ -1,16 +1,14 @@
 package com.example.myapplication22.model;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.TimeUnit;
 
 public class Model {
 
     private PrintWriter out;
-    public BlockingQueue<Runnable> dispatchQueue = new LinkedBlockingQueue<Runnable>();
+    public BlockingQueue<Runnable> dispatchQueue = new LinkedBlockingQueue<>();
     boolean status = false;
 
     public Model() { }
