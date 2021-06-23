@@ -50,31 +50,6 @@ public class JoystickView extends SurfaceView implements SurfaceHolder.Callback,
         this.controller = controller;
     }
 
-//    public boolean onTouch(View v, MotionEvent e) { // On touching
-//        if (v.equals(this)) { // on this view
-//            if(e.getAction() != e.ACTION_UP) { // As long as the user touching the screen
-//                float displacement = (float) Math.sqrt((Math.pow(e.getX() - centerX, 2)) + Math.pow(e.getY() - centerY,2));
-//                if (displacement < baseRadius) {
-//                    drawJoystick(e.getX(), e.getY());
-//                    joystickCallback.onJoystickMoved((e.getX() - centerX) / baseRadius, (e.getY() - centerY)/baseRadius, getId());
-//                    //System.out.println(e.getX() + "," + e.getY());
-//                }
-//                else {
-//                    float ratio = baseRadius / displacement;
-//                    float constrainedX = centerX + (e.getX() - centerX) * ratio;
-//                    float constrainedY = centerY + (e.getY() - centerY) * ratio;
-//                    drawJoystick(constrainedX, constrainedY);
-//                    joystickCallback.onJoystickMoved((constrainedX-centerX)/baseRadius, (constrainedY-centerY)/baseRadius, getId());
-//                }
-//                // if (Math.sqrt((e.getX() * e.getX()) + (e.getY() * e.getY())) <= )
-//            }
-//            else {
-//                drawJoystick(centerX, centerY);
-//                joystickCallback.onJoystickMoved(0,0,getId());
-//            }
-//        }
-//        return true;
-//    }
 
     public boolean onTouch(View v, MotionEvent e) { // On touching
         if (v.equals(this)) { // on this view

@@ -3,22 +3,16 @@ package com.example.myapplication22.view;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
-import androidx.appcompat.widget.AppCompatImageView;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.databinding.DataBindingUtil;
 
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.VideoView;
 
@@ -27,8 +21,6 @@ import com.example.myapplication22.databinding.ActivityMainBinding;
 import com.example.myapplication22.model.Model;
 import com.example.myapplication22.view_model.ViewModel;
 import com.google.android.material.snackbar.Snackbar;
-
-import java.net.URI;
 
 public class MainActivity extends AppCompatActivity implements JoystickView.JoystickListener {
 
@@ -60,8 +52,6 @@ public class MainActivity extends AppCompatActivity implements JoystickView.Joys
             mp.setLooping(true);
             vv.start();
         });
-
-
 
         SeekBar rudderBar = findViewById(R.id.rudderBar);
         SeekBar throttleBar = findViewById(R.id.throttleBar);
@@ -119,15 +109,20 @@ public class MainActivity extends AppCompatActivity implements JoystickView.Joys
         findViewById(R.id.editTextTextPersonName).setVisibility(View.INVISIBLE);
         findViewById(R.id.editTextTextPersonName2).setVisibility(View.INVISIBLE);
         findViewById(R.id.button).setVisibility(View.INVISIBLE);
-        findViewById(R.id.button).setVisibility(View.INVISIBLE);
         findViewById(R.id.textView).setVisibility(View.INVISIBLE);
         findViewById(R.id.textView2).setVisibility(View.INVISIBLE);
-        findViewById(R.id.joystick).setVisibility(View.VISIBLE);
-        findViewById(R.id.rudderBar).setVisibility(View.VISIBLE);
-        findViewById(R.id.throttleBar).setVisibility(View.VISIBLE);
         findViewById(R.id.gif_video_view).setVisibility(View.INVISIBLE);
         findViewById(R.id.gradiant).setVisibility(View.INVISIBLE);
         findViewById(R.id.logo).setVisibility(View.INVISIBLE);
+
+        findViewById(R.id.joystick).setVisibility(View.VISIBLE);
+        findViewById(R.id.rudderBar).setVisibility(View.VISIBLE);
+        findViewById(R.id.throttleBar).setVisibility(View.VISIBLE);
+        findViewById(R.id.background).setVisibility(View.VISIBLE);
+        findViewById(R.id.airspeed).setVisibility(View.VISIBLE);
+        findViewById(R.id.altimeter).setVisibility(View.VISIBLE);
+        findViewById(R.id.altitude).setVisibility(View.VISIBLE);
+        findViewById(R.id.turn_indicator).setVisibility(View.VISIBLE);
     }
 
     @Override
