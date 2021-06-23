@@ -1,28 +1,14 @@
 package com.example.myapplication22.view;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Picture;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
-import android.provider.MediaStore;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-
 import androidx.appcompat.widget.AppCompatImageView;
-
 import com.example.myapplication22.R;
-
-import java.sql.SQLOutput;
 
 public class JoystickView extends SurfaceView implements SurfaceHolder.Callback, View.OnTouchListener {
     private float centerX;
@@ -147,8 +133,6 @@ public class JoystickView extends SurfaceView implements SurfaceHolder.Callback,
         controller.requestLayout();
         controller.getLayoutParams().height = (int) (2 * hatRadius);
         controller.getLayoutParams().width = (int) (2 * hatRadius);
-        System.out.println("\nx: "+controller.getX());
-        System.out.println("y: "+controller.getY());
         controller.draw(myCanvas);
         getHolder().unlockCanvasAndPost(myCanvas);
     }
@@ -165,42 +149,20 @@ public class JoystickView extends SurfaceView implements SurfaceHolder.Callback,
         if (getHolder().getSurface().isValid()) {
             int bias = 90;
             Canvas myCanvas = this.getHolder().lockCanvas();
-            base.setImageResource(R.drawable.base);
-            base.requestLayout();
-            base.getLayoutParams().height = (int) (2 * baseRadius + bias);
-            base.getLayoutParams().width = (int) (2 * baseRadius + bias);
-            base.draw(myCanvas);
             float x = base.getX();
             float y = base.getY();
             controller.setImageResource(R.drawable.controller);
             controller.requestLayout();
             controller.getLayoutParams().height = (int) (2 * hatRadius);
             controller.getLayoutParams().width = (int) (2 * hatRadius);
-            System.out.println("\nx: "+controller.getX());
-            System.out.println("y: "+controller.getY());
             controller.setX(x + baseRadius - hatRadius + (int)(bias/2));
             controller.setY(y + baseRadius - hatRadius + (int)(bias/2));
             if (!firstTouch) {
-                controller.setX(x + baseRadius - hatRadius + (int)(bias/2) + xPercent*baseRadius);// + newX - (baseRadius+bias)*(hatRadius/baseRadius));
-                controller.setY(y + baseRadius - hatRadius + (int)(bias/2) + yPercent*baseRadius);// + newY - (baseRadius+bias)*(hatRadius/baseRadius));
+                controller.setX(x + baseRadius - hatRadius + (int)(bias/2) + xPercent*baseRadius);
+                controller.setY(y + baseRadius - hatRadius + (int)(bias/2) + yPercent*baseRadius);
             }
             controller.draw(myCanvas);
             firstTouch = false;
-            //drawBase();
-//            AppCompatImageView acp = findViewById(R.id.controller);
-//            acp.requestLayout();
-//            acp.setImageResource(R.drawable.controller);
-//            acp.getLayoutParams().height = (int) (2 * hatRadius);
-//            acp.getLayoutParams().width = (int) (2 * hatRadius);
-//            acp.setX(newX);
-//            acp.setY(newY);
-//            acp.draw(myCanvas);
-//            Paint colors = new Paint();
-//            myCanvas.drawColor(Color.argb(160, 100, 100, 100));
-//            colors.setARGB(255,250,50,50); // Color of base of joystick
-//            myCanvas.drawCircle(centerX, centerY, baseRadius, colors);
-//            colors.setARGB(255,0,0,255); // Color of the cap [joystick itself]
-//            myCanvas.drawCircle(newX, newY, hatRadius, colors);
             getHolder().unlockCanvasAndPost(myCanvas);
         }
     }

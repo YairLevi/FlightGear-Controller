@@ -11,6 +11,7 @@ public class ViewModel {
     public ViewModel(Model m) { this.m = m; }
 
     public boolean connect() {
+        System.out.println(ip + " " + port);
         if (port == null || ip == null)
             return false;
         return this.m.connect(ip, Integer.parseInt(port));

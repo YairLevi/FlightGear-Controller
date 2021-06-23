@@ -15,93 +15,118 @@
         tools:context=".view.MainActivity"
         android:background="@color/cardview_dark_background">
 
-        <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="0dp"
-            android:textColor="@color/white"
-            android:layout_height="50dp"
-            android:hint="@string/press_to_type"
-            android:inputType="textPersonName"
-            android:textColorHint="@color/white"
-            android:backgroundTint="@color/white"
-            android:text="@={vm.ip}"
-            app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.07"
-            app:layout_constraintHorizontal_bias="0.8"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.9"
-            app:layout_constraintWidth_percent="0.6"
+
+        <VideoView
+            android:id="@+id/gif_video_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <View
+            android:id="@+id/gradiant"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradiant_black"
             />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/logo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.8"
+            app:layout_constraintHeight_percent="0.15"
+            app:layout_constraintVertical_bias="0.1"
+            android:src="@drawable/logo_fg"
+            />
+
 
         <EditText
             android:id="@+id/editTextTextPersonName2"
             android:layout_width="0dp"
             android:layout_height="50dp"
+            android:backgroundTint="@color/white"
             android:hint="@string/press_to_type"
             android:inputType="textPersonName"
             android:text="@={vm.port}"
-            android:textColorHint="@color/white"
-            android:backgroundTint="@color/white"
             android:textColor="@color/white"
+            android:textColorHint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.79"
+            app:layout_constraintHeight_percent="0.06"
+            app:layout_constraintHorizontal_bias="0.817"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.4"
-            app:layout_constraintHeight_percent="0.06"
+            app:layout_constraintVertical_bias="0.778"
             app:layout_constraintWidth_percent="0.6" />
 
         <TextView
-            android:id="@+id/textView"
-            android:textColor="@color/white"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:text="@string/host_ip"
-            android:textSize="20sp"
-            android:typeface="normal"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"
-            app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName"
-            app:layout_constraintHorizontal_bias="0.8"
-            app:layout_constraintVertical_bias="0.6"
-            app:layout_constraintWidth_percent="0.25"
-            app:layout_constraintHeight_percent="0.06"
-            />
-
-        <TextView
             android:id="@+id/textView2"
-            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="@string/port"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:typeface="normal"
             app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName2"
             app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName2"
-            app:layout_constraintVertical_bias="0.3" />
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="@string/host_ip"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:typeface="normal"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"
+            app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName"
+            app:layout_constraintHeight_percent="0.06"
+            app:layout_constraintHorizontal_bias="0.787"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/white"
+            android:hint="@string/press_to_type"
+            android:inputType="textPersonName"
+            android:text="@={vm.ip}"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.07"
+            app:layout_constraintHorizontal_bias="0.829"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.95"
+            app:layout_constraintWidth_percent="0.6" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:textSize="14sp"
             android:backgroundTint="@color/teal_700"
             android:text="@string/connect_to_flightgear"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
+            app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toStartOf="@+id/textView"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
-            app:layout_constraintVertical_bias="0.1"
-            app:layout_constraintWidth_percent="0.7"
-            />
+            app:layout_constraintVertical_bias="0.336"
+            app:layout_constraintWidth_percent="0.7" />
 
         <SeekBar
             android:id="@+id/rudderBar"

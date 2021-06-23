@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -14,9 +15,12 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.databinding.DataBindingUtil;
 
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
+import android.widget.VideoView;
 
 import com.example.myapplication22.R;
 import com.example.myapplication22.databinding.ActivityMainBinding;
@@ -44,6 +48,18 @@ public class MainActivity extends AppCompatActivity implements JoystickView.Joys
         ActivityMainBinding b = DataBindingUtil.setContentView(this, R.layout.activity_main);
         vm = new ViewModel(new Model());
         b.setVm(vm);
+
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        int rawId = getResources().getIdentifier("gif_entrance",  "raw", getPackageName());
+        String path = "android.resource://" + getPackageName() + "/" + rawId;
+        VideoView vv = (VideoView)findViewById(R.id.gif_video_view);
+        vv.setVideoURI(Uri.parse(path));
+
+        vv.setOnPreparedListener(mp -> {
+            mp.setLooping(true);
+            vv.start();
+        });
 
 
 
@@ -87,6 +103,8 @@ public class MainActivity extends AppCompatActivity implements JoystickView.Joys
             } else {
                 MediaPlayer mp = MediaPlayer.create(this, R.raw.ready_for_takeoff);
                 mp.start();
+                float volume = 100;
+                mp.setVolume(volume, volume);
                 changeScreen();
             }
         });
@@ -107,6 +125,9 @@ public class MainActivity extends AppCompatActivity implements JoystickView.Joys
         findViewById(R.id.joystick).setVisibility(View.VISIBLE);
         findViewById(R.id.rudderBar).setVisibility(View.VISIBLE);
         findViewById(R.id.throttleBar).setVisibility(View.VISIBLE);
+        findViewById(R.id.gif_video_view).setVisibility(View.INVISIBLE);
+        findViewById(R.id.gradiant).setVisibility(View.INVISIBLE);
+        findViewById(R.id.logo).setVisibility(View.INVISIBLE);
     }
 
     @Override
