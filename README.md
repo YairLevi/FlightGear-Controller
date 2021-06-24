@@ -9,8 +9,10 @@ Whilst FlightGear running on the PC, we can connect our device to control the pl
 ![alt text](https://github.com/eladoni1/Pictures_FG_Controller/blob/main/Controller.jpeg?raw=true)
 
 
+![alt text](https://github.com/eladoni1/Pictures_FG_Controller/blob/main/Connection.jpeg?raw=true)
 
-![Alt Text](https://github.com/eladoni1/Pictures_FG_Controller/blob/main/ezgif-1-b99124993209.gif?raw=true)
+
+![Alt Text](https://github.com/eladoni1/Pictures_FG_Controller/blob/main/newGif.gif?raw=true)
 
 
 
@@ -62,8 +64,6 @@ Joystick :
 - Up and Down : Inverted movement of the aircraft, like in a real vessel - down goes upwards, up goes downwards.
 - Left and Right : Turning, or flipping the vessel left and right - left flips the vessel to the left side, and right to the right side.
 
+Video on how to use the program and how the code is organized (in Hebrew) [here](https://www.youtube.com/watch?v=cv0r8JrFNGw&ab_channel=YairLevi).
 
-#### Packages, out source features and final notes
-
-// how did we add the gif? any package?
 
