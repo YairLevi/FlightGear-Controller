@@ -72,7 +72,7 @@ Joystick :
 
 Video on how to use the program and how the code is organized (in Hebrew) [here](https://www.youtube.com/watch?v=cv0r8JrFNGw&ab_channel=YairLevi).
 
-XML on the code's behavior and classes hierarchy :
+UML on the code's behavior and classes hierarchy :
 
 ![alt text](https://github.com/eladoni1/Pictures_FG_Controller/blob/main/XML.PNG?raw=true)
 
