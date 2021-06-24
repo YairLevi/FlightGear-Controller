@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements JoystickView.Joys
     String rudder = "flight/rudder";
     String throttle = "engines/current-engine/throttle";
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,12 +41,10 @@ public class MainActivity extends AppCompatActivity implements JoystickView.Joys
         b.setVm(vm);
 
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         int rawId = getResources().getIdentifier("gif_entrance",  "raw", getPackageName());
         String path = "android.resource://" + getPackageName() + "/" + rawId;
         VideoView vv = (VideoView)findViewById(R.id.gif_video_view);
         vv.setVideoURI(Uri.parse(path));
-
         vv.setOnPreparedListener(mp -> {
             mp.setLooping(true);
             vv.start();
