@@ -64,7 +64,7 @@ The sliders above the joystick represent the throttle (fuel flow) and the rudder
 - Throttle : Basically represent the fuel flow to the engine, or in other words - speed of the vessel (The higher the value - the faster it goes).
 - Rudder : Flat hinge in the back of the plane controlling the air-flow which is also the way the aircraft is turning left and right.
 
-![alt text](https://github.com/eladoni1/Pictures_FG_Controller/blob/main/XML.PNG?raw=true)
+![alt text](https://github.com/eladoni1/Pictures_FG_Controller/blob/main/base.png?raw=true)
 
 Joystick :
 - Up and Down : Inverted movement of the aircraft, like in a real vessel - down goes upwards, up goes downwards.
