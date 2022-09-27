@@ -20,7 +20,8 @@ Whilst FlightGear running on the PC, we can connect our device to control the pl
 ### Requirements and installation
 
 Supports android version 5.0 (Lollipop) and above.
-For the tests and running of the application we used the lastest stable version of Flight Gear (2020.3.9). (https://www.flightgear.org/download/)[download here]
+For the tests and running of the application we used the lastest stable version of Flight Gear (2020.3.9). 
+[download here](https://www.flightgear.org/download/)
 
 If you don't want to take a look into the code itself, you can always just use the '.APK' file - just download to your smartphone and install and Voilà!
 If indulge with an application code is not your thing, you can always just download the apk file from the [repository page](https://github.com/YairLevi/FlightGear-Controller) and install on your android device.
